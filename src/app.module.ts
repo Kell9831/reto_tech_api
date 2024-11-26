@@ -6,14 +6,14 @@ import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type:'mysql',
-      host: 'localhost',
-      port: 3307,
-      username: 'data_crud',
-      password: 'root',
-      database: 'db_crud',
+      type: 'mysql',
+      host: process.env.DB_HOST,  
+      port: parseInt(process.env.DB_PORT), 
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true
+      synchronize: true,
     }),
     UsersModule,
     PostsModule,
