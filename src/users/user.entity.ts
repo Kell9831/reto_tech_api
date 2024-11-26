@@ -25,5 +25,4 @@ export class User {
 
     @OneToMany(()=> Post, post => post.author)
         posts: Post[]
-
 }

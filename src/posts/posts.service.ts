@@ -34,6 +34,13 @@ export class PostsService {
     });
   }
 
+  async getPostsByUser(userId: number) {
+    return this.postsRepository.find({
+      where: { author: { id: userId } }, 
+      relations: ['author'],
+    });
+  }
+
   async getPost(id: number) {
     const post = await this.postsRepository.findOne({
       where: { id },

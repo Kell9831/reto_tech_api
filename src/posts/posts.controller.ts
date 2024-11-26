@@ -24,6 +24,13 @@ export class PostsController {
         return this.postsService.getPosts()
     }
 
+    @Get('me')
+    getMyPosts(@Request() req) {
+    const userId = req.user.id;
+    return this.postsService.getPostsByUser(userId);
+    }
+
+
     @Get(':id')
     getPost(@Param('id') id: number) {
       return this.postsService.getPost(Number(id));
